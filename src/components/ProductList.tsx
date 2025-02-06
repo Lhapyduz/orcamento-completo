@@ -1,10 +1,13 @@
 import { Product } from "@/types/Product";
+import { Trash2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface ProductListProps {
   products: Product[];
+  onRemoveProduct: (id: string) => void;
 }
 
-const ProductList = ({ products }: ProductListProps) => {
+const ProductList = ({ products, onRemoveProduct }: ProductListProps) => {
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -41,6 +44,9 @@ const ProductList = ({ products }: ProductListProps) => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Valor Unitário
               </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Ações
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -66,6 +72,16 @@ const ProductList = ({ products }: ProductListProps) => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                   {formatCurrency(product.unitPrice)}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => onRemoveProduct(product.id)}
+                    className="text-red-600 hover:text-red-800 hover:bg-red-100"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </td>
               </tr>
             ))}

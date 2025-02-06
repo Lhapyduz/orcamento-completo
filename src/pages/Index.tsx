@@ -20,6 +20,10 @@ const Index = () => {
     ]);
   };
 
+  const handleRemoveProduct = (id: string) => {
+    setProducts(products.filter(product => product.id !== id));
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -30,7 +34,7 @@ const Index = () => {
           <ProductForm onAddProduct={handleAddProduct} />
           {products.length > 0 && (
             <>
-              <ProductList products={products} />
+              <ProductList products={products} onRemoveProduct={handleRemoveProduct} />
               <ProductActions products={products} />
             </>
           )}
