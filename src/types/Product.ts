@@ -4,4 +4,7 @@ export interface Product {
   quantity: number;
   price: number;
   unitPrice: number;
+  material: string;
+  format: string;
+  colors: string;
 }

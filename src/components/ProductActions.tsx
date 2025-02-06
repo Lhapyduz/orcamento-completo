@@ -21,6 +21,9 @@ const ProductActions = ({ products }: ProductActionsProps) => {
     
     products.forEach((product) => {
       message += `*${product.name}*\n`;
+      message += `Material: ${product.material}\n`;
+      message += `Formato: ${product.format}\n`;
+      message += `Cores: ${product.colors}\n`;
       message += `Quantidade: ${product.quantity}\n`;
       message += `Preço Total: ${formatCurrency(product.price)}\n`;
       message += `Valor Unitário: ${formatCurrency(product.unitPrice)}\n\n`;
@@ -43,10 +46,13 @@ const ProductActions = ({ products }: ProductActionsProps) => {
     products.forEach((product) => {
       doc.setFontSize(12);
       doc.text(`Produto: ${product.name}`, 20, yPosition);
-      doc.text(`Quantidade: ${product.quantity}`, 20, yPosition + 7);
-      doc.text(`Preço Total: ${formatCurrency(product.price)}`, 20, yPosition + 14);
-      doc.text(`Valor Unitário: ${formatCurrency(product.unitPrice)}`, 20, yPosition + 21);
-      yPosition += 35;
+      doc.text(`Material: ${product.material}`, 20, yPosition + 7);
+      doc.text(`Formato: ${product.format}`, 20, yPosition + 14);
+      doc.text(`Cores: ${product.colors}`, 20, yPosition + 21);
+      doc.text(`Quantidade: ${product.quantity}`, 20, yPosition + 28);
+      doc.text(`Preço Total: ${formatCurrency(product.price)}`, 20, yPosition + 35);
+      doc.text(`Valor Unitário: ${formatCurrency(product.unitPrice)}`, 20, yPosition + 42);
+      yPosition += 56;
     });
 
     doc.setFontSize(14);
